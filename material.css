@@ -1,0 +1,188 @@
+.materials-container {
+    margin-left: 100px;
+    padding: 2rem;
+    height: 100vh;
+    overflow-y: auto;
+    color: white;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.materials-container h1 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+.materials-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.material-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.material-section h2 {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.material-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 1rem 0;
+}
+
+.material-card {
+    width: 100%;
+    max-width: 320px;
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.material-card:hover {
+    transform: translateY(-5px);
+}
+
+.material-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.material-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.material-card p {
+    color: #ddd;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.material-card p::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+}
+
+.view-btn {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.view-btn:hover {
+    background: #1976D2;
+    transform: translateY(-2px);
+}
+
+.view-btn::after {
+    content: '↓';
+    font-size: 1.2rem;
+}
+
+/* Scrollbar Styling */
+.material-cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.material-cards::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.material-cards::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.material-cards::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.card-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+}
+
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.material-card:hover .card-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.material-card:hover .card-icon svg {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+    .materials-container {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .material-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+
+    .material-card {
+        max-width: 280px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .materials-container {
+        padding: 0.8rem;
+        width: 98%;
+    }
+
+    .material-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .material-card {
+        max-width: 100%;
+    }
+}

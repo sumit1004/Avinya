@@ -1,1 +1,2 @@
 # Avinya
+ An advanced AI-driven learning platform that converts notes into video lectures, generates smart study notes, provides AI-powered doubt-solving, quizzes, study schedules, and integrates gamification to enhance student engagement. The platform also includes 1-on-1 video tutoring with top teachers.  ✨ Features: ✅ AI-Generated Video Lectures (Text/PDF to Video) ✅ Smart Notes & Summaries (AI-Powered) ✅ Instant Doubt-Solving Chatbot ✅ Gamified Quizzes & Challenges ✅ Personalized Study Planner & Timetable ✅ 1-on-1 Live Tutoring with Experts

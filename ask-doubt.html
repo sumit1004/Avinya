@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinya - Ask Doubt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/ask-doubt.css">
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+   
+            <!-- Main Content -->
+            <div class="features-section">
+            <div class="doubt-container" id="doubt">
+                <div class="doubt-header">
+                    <h1>Ask Your Doubt</h1>
+                    <p>Get real-time answers to your questions from our experts</p>
+                </div>
+                
+                <div class="doubt-content">
+                    <div class="doubt-section">
+                        <div class="doubt-chat">
+                            <div class="chat-messages" id="doubtMessages">
+                                <div class="message system-message">
+                                    Welcome to Avinya Doubt Solving! Our experts are online and ready to help you.
+                                </div>
+                                <!-- Messages will appear here -->
+                            </div>
+                            
+                            <div class="doubt-input">
+                                <div class="subject-selector">
+                                    <select id="subjectSelect">
+                                        <option value="">Select Subject</option>
+                                        <option value="math">Mathematics</option>
+                                        <option value="physics">Physics</option>
+                                        <option value="chemistry">Chemistry</option>
+                                        <option value="biology">Biology</option>
+                                        <option value="computer">Computer Science</option>
+                                        <option value="english">English</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <textarea id="doubtInput" placeholder="Type your doubt here..."></textarea>
+                                <div class="attachment-upload">
+                                    <label for="attachmentInput" class="attachment-label">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M21.44 11.05l-9.19 9.19a6.003 6.003 0 01-8.49-8.49l9.19-9.19a4.002 4.002 0 015.66 5.66l-9.2 9.19a2.001 2.001 0 01-2.83-2.83l8.49-8.48" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </label>
+                                    <input type="file" id="attachmentInput" accept="image/*,.pdf,.doc,.docx">
+                                </div>
+                                <button id="sendDoubt">Send</button>
+                            </div>
+                        </div>
+                        
+                        <div class="doubt-info">
+                            <div class="info-card">
+                                <h3>How It Works</h3>
+                                <ol>
+                                    <li>Select the subject related to your doubt</li>
+                                    <li>Type your question in detail</li>
+                                    <li>Attach any relevant images or files (optional)</li>
+                                    <li>Click Send and wait for an expert to respond</li>
+                                </ol>
+                            </div>
+                            
+                            <div class="info-card">
+                                <h3>Active Experts</h3>
+                                <div class="experts-list">
+                                    <div class="expert">
+                                        <div class="expert-avatar online"></div>
+                                        <div class="expert-info">
+                                            <div class="expert-name">Dr. Sharma</div>
+                                            <div class="expert-subject">Mathematics</div>
+                                        </div>
+                                    </div>
+                                    <div class="expert">
+                                        <div class="expert-avatar online"></div>
+                                        <div class="expert-info">
+                                            <div class="expert-name">Prof. Gupta</div>
+                                            <div class="expert-subject">Physics</div>
+                                        </div>
+                                    </div>
+                                    <div class="expert">
+                                        <div class="expert-avatar"></div>
+                                        <div class="expert-info">
+                                            <div class="expert-name">Dr. Patel</div>
+                                            <div class="expert-subject">Chemistry</div>
+                                        </div>
+                                    </div>
+                                    <div class="expert">
+                                        <div class="expert-avatar online"></div>
+                                        <div class="expert-info">
+                                            <div class="expert-name">Ms. Singh</div>
+                                            <div class="expert-subject">Computer Science</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    
+                    <div class="recent-doubts">
+                        <h3>Recently Answered Doubts</h3>
+                        <div class="doubts-list">
+                            <div class="doubt-item">
+                                <div class="doubt-question">How do I solve quadratic equations using the quadratic formula?</div>
+                                <div class="doubt-meta">
+                                    <span class="doubt-subject">Mathematics</span>
+                                    <span class="doubt-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="doubt-item">
+                                <div class="doubt-question">What is the difference between potential energy and kinetic energy?</div>
+                                <div class="doubt-meta">
+                                    <span class="doubt-subject">Physics</span>
+                                    <span class="doubt-time">3 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="doubt-item">
+                                <div class="doubt-question">How do I balance chemical equations?</div>
+                                <div class="doubt-meta">
+                                    <span class="doubt-subject">Chemistry</span>
+                                    <span class="doubt-time">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="doubt-item">
+                                <div class="doubt-question">What is the difference between a class and an object in OOP?</div>
+                                <div class="doubt-meta">
+                                    <span class="doubt-subject">Computer Science</span>
+                                    <span class="doubt-time">Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chatbot Container -->
+            <div class="chatbot-container">
+                <div class="chat-icon" id="chatIcon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+                </div>
+                <div class="chat-window" id="chatWindow">
+                    <div class="chat-header">
+                        <span>Avinya Assistant</span>
+                        <span class="close-chat" id="closeChat">×</span>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            Hi there! I'm Avinya's AI assistant. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="userInput" placeholder="Type your message...">
+                        <button id="sendMessage">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+            <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+            <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+            <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+            <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+            <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+            <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+            <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+            <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+            <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+        </ul>
+        <a href="login.html" class="logout-btn">
+            <img src="/assets/login.png" alt="">
+            <span>Login</span>
+        </a>
+    </div>
+    
+    <script>
+        // Menu toggle functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+        
+        // Doubt chat functionality
+        const doubtMessages = document.getElementById('doubtMessages');
+        const doubtInput = document.getElementById('doubtInput');
+        const subjectSelect = document.getElementById('subjectSelect');
+        const attachmentInput = document.getElementById('attachmentInput');
+        const sendDoubtBtn = document.getElementById('sendDoubt');
+        
+        // Send doubt when button is clicked
+        sendDoubtBtn.addEventListener('click', sendDoubt);
+        
+        // Send doubt when Enter key is pressed (Shift+Enter for new line)
+        doubtInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendDoubt();
+            }
+        });
+        
+        // Function to send doubt
+        function sendDoubt() {
+            const text = doubtInput.value.trim();
+            const subject = subjectSelect.value;
+            
+            if (!text) {
+                return;
+            }
+            
+            if (!subject) {
+                alert('Please select a subject for your doubt');
+                return;
+            }
+            
+            // Add user message to chat
+            addMessage(text, 'user-message');
+            
+            // Clear input
+            doubtInput.value = '';
+            
+            // Show typing indicator
+            addTypingIndicator();
+            
+            // Simulate response after delay (replace with actual API call)
+            setTimeout(() => {
+                // Remove typing indicator
+                removeTypingIndicator();
+                
+                // Add expert response
+                const responses = [
+                    "That's a great question! Let me explain...",
+                    "I understand your doubt. Here's how you can approach this problem...",
+                    "Thanks for your question. The concept you're asking about works like this...",
+                    "I'd be happy to help with that. The key thing to understand is..."
+                ];
+                
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                addMessage(randomResponse + " (This is a simulated response. In a real implementation, your doubt would be answered by an actual expert in real-time.)", 'expert-message');
+            }, 2000);
+        }
+        
+        // Function to add message to chat
+        function addMessage(text, className) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${className}`;
+            messageDiv.textContent = text;
+            
+            doubtMessages.appendChild(messageDiv);
+            doubtMessages.scrollTop = doubtMessages.scrollHeight;
+        }
+        
+        // Function to add typing indicator
+        function addTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message typing-indicator';
+            typingDiv.id = 'doubtTypingIndicator';
+            
+            for (let i = 0; i < 3; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                typingDiv.appendChild(dot);
+            }
+            
+            doubtMessages.appendChild(typingDiv);
+            doubtMessages.scrollTop = doubtMessages.scrollHeight;
+        }
+        
+        // Function to remove typing indicator
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('doubtTypingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+        
+        // Handle file attachment
+        attachmentInput.addEventListener('change', () => {
+            if (attachmentInput.files.length > 0) {
+                const fileName = attachmentInput.files[0].name;
+                alert(`File attached: ${fileName}`);
+                // In a real implementation, you would handle the file upload
+            }
+        });
+        
+        // Make recent doubt items clickable
+        const doubtItems = document.querySelectorAll('.doubt-item');
+        doubtItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const question = item.querySelector('.doubt-question').textContent;
+                const subject = item.querySelector('.doubt-subject').textContent;
+                
+                // Set the subject in the dropdown
+                Array.from(subjectSelect.options).forEach(option => {
+                    if (option.text.toLowerCase() === subject.toLowerCase()) {
+                        subjectSelect.value = option.value;
+                    }
+                });
+                
+                // Set the question in the input
+                doubtInput.value = question;
+                
+                // Focus the input
+                doubtInput.focus();
+            });
+        });
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html> 

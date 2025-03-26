@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+         
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                    <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                    <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                    <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                    <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                    <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                    <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                    <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                    <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                    <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                </ul>
+                <a href="#" class="logout-btn" id="logoutBtn">
+                    <img src="/assets/log-out.png" alt="">
+                    <span>Logout</span>
+                </a>
+            </div>
+
+            <div class="dashboard-container">
+                <div class="profile-section">
+                    <div class="profile-header">
+                        <img src="/assets/avatar.png" alt="Profile" class="profile-pic">
+                        <div class="profile-info">
+                            <h2 id="studentName">Loading...</h2>
+                            <p id="studentClass">Class: Loading...</p>
+                            <p id="studentEmail">Email: Loading...</p>
+                            <p id="studentPhone">Phone: Loading...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Videos Generated</h3>
+                        <p class="stat-number">12</p>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Notes Created</h3>
+                        <p class="stat-number">25</p>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Doubts Asked</h3>
+                        <p class="stat-number">8</p>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Quizzes Taken</h3>
+                        <p class="stat-number">15</p>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Timetables Created</h3>
+                        <p class="stat-number">3</p>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                </div>
+
+                <div class="activity-section">
+                    <div class="recent-activities">
+                        <h3>Recent Activities</h3>
+                        <div class="activity-list">
+                            <!-- Activities will be populated via JavaScript -->
+                        </div>
+                    </div>
+                    <div class="pending-items">
+                        <h3>Pending Tasks</h3>
+                        <div class="pending-list">
+                            <!-- Pending items will be populated via JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-section">
+                    <h3>Quick Actions</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <img src="/assets/videogen.gif" alt="Video Generator">
+                            <h3>Generate Video</h3>
+                            <p>Convert notes to video lectures</p>
+                            <a href="home.html"><button class="feature-btn">Create</button></a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/note.png" alt="Notes">
+                            <h3>Smart Notes</h3>
+                            <p>Create AI-powered study notes</p>
+                            <a href="smart-notes.html"><button class="feature-btn">Write</button></a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/summerize.png" alt="Summarize">
+                            <h3>Summarize</h3>
+                            <p>Get quick content summaries</p>
+                            <a href="summarizer.html"><button class="feature-btn">Start</button></a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/doubt.png" alt="Doubt">
+                            <h3>Ask Doubt</h3>
+                            <p>Get instant answers</p>
+                            <a href="ask-doubt.html"><button class="feature-btn" onclick="openDoubtModal()">Ask</button></a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/quiz.png" alt="Quiz">
+                            <h3>Take Quiz</h3>
+                            <p>Test your knowledge</p>
+                            <a href="take-quiz.html"><button class="feature-btn" onclick="openQuizModal()">Start</button></a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/timetable.png" alt="Timetable">
+                            <h3>Timetable</h3>
+                            <p>Create study schedule</p>
+                            <a href="timetable.html"><button class="feature-btn">Plan</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    <script src="js/dummyUsers.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Add sidebar toggle functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+
+        // Add logout functionality
+        document.querySelector('.logout-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('token');
+            localStorage.removeItem('userData');
+            window.location.href = 'index.html';
+        });
+    </script>
+    
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add this before the closing body tag, but after other scripts -->
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
