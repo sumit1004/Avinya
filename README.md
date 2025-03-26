@@ -77,5 +77,5 @@ We welcome contributions! To contribute:
 This project is licensed under the MIT License.
 
 ## 💡 Contact
-For queries or collaboration, reach out via **your-sumitkumar042006@gmail.com** or open an issue in the repository.
+For queries or collaboration, reach out via sumitkumar042006@gmail.com** or open an issue in the repository.
 
