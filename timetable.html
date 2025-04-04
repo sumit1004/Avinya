@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinya - Make Timetable</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/take-quiz.css">
+    <style>
+        .timetable-form-container {
+            max-width: 90%;
+            width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 95%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #5e17eb;
+            border-radius: 8px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #8b4fff;
+            box-shadow: 0 0 10px rgba(94, 23, 235, 0.3);
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background: #5e17eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .generate-btn:hover {
+            background: #4a11c0;
+        }
+
+        #timetableResult {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(40, 40, 40, 0.9);
+            border-radius: 10px;
+            white-space: pre-wrap;
+        }
+
+        @media (max-width: 768px) {
+            .timetable-form-container {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="./assets/bgvideo.mp4" type="video/mp4">
+            </video>
+   
+            <!-- Main Content -->
+          
+            <!-- Chatbot Container -->
+            <div class="chatbot-container">
+                <div class="chat-icon" id="chatIcon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+                </div>
+                <div class="chat-window" id="chatWindow">
+                    <div class="chat-header">
+                        <span>Avinya Assistant</span>
+                        <span class="close-chat" id="closeChat">×</span>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            Hi there! I'm Avinya's AI assistant. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="userInput" placeholder="Type your message...">
+                        <button id="sendMessage">Send</button>
+                    </div>
+                </div>
+            </div>
+            <div class="features-section">
+            <div class="timetable-form-container">
+                <div class="form-header">
+                    <h1>Create Your Perfect Timetable</h1>
+                    <p>Let AI help you organize your study schedule</p>
+                </div>
+                
+                <form id="timetableForm" class="form-grid">
+                    <div class="input-group">
+                        <label for="subjects">Your Subjects</label>
+                        <input type="text" id="subjects" required placeholder="e.g., Math, Physics, Chemistry">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="studyHours">Daily Study Hours</label>
+                        <input type="number" id="studyHours" min="1" max="12" required placeholder="Hours per day">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="preferences">Study Time Preference</label>
+                        <select id="preferences" required>
+                            <option value="morning">Morning Person (5 AM - 12 PM)</option>
+                            <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                            <option value="evening">Evening (5 PM - 9 PM)</option>
+                            <option value="night">Night Owl (9 PM - 5 AM)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="breakTime">Preferred Break Duration (minutes)</label>
+                        <input type="number" id="breakTime" min="5" max="60" value="15">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="additionalInfo">Special Requirements</label>
+                        <textarea id="additionalInfo" rows="4" placeholder="Any specific requirements or constraints..."></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <button type="submit" class="generate-btn">Generate Timetable</button>
+                    </div>
+                </form>
+                
+                <div id="timetableResult"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" id="menuToggle"><img src="./assets/menu.svg" alt=""><span>Menu</span></a></li>
+            <li><a href="home.html"><img src="./assets/Home.svg" alt=""><span>Home</span></a></li>
+            <li><a href="dashboard.html" class="active"><img src="./assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+            <li><a href="material.html"><img src="./assets/material.svg" alt=""><span>Features</span></a></li>
+            <li><a href="videocall.html"><img src="./assets/videocall.png" alt=""><span>Call experts</span></a></li>
+            <li><a href="coin.html"><img src="./assets/coins.png" alt=""><span>Coin earned</span></a></li>
+            <li><a href="game.html"><img src="./assets/game.png" alt=""><span>Games</span></a></li>
+            <li><a href="tools.html"><img src="./assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+            <li><a href="contact.html"><img src="./assets/contact.svg" alt=""><span>Contact us</span></a></li>
+            <li><a href="about.html"><img src="./assets/about.svg" alt=""><span>About us</span></a></li>
+        </ul>
+        <a href="login.html" class="logout-btn">
+            <img src="./assets/login.png" alt="">
+            <span>Login</span>
+        </a>
+    </div>
+    
+    <script src="js/chatbot.js"></script>
+    <script src="js/timetable.js"></script>
+</body>
+</html>

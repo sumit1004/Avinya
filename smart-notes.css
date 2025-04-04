@@ -1,0 +1,128 @@
+.notes-container {
+    margin-left: 100px;
+    padding: 2rem;
+    color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4CAF50 rgba(255, 255, 255, 0.1);
+}
+
+.notes-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notes-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.notes-container::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+}
+
+.notes-container::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+
+.notes-container h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.notes-input-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+}
+
+
+
+.generate-btn:hover {
+    background: #45a049;
+}
+
+.notes-output-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 10px;
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+}
+
+.notes-output-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notes-output-section::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.notes-output-section::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+}
+
+.notes-content {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    padding-right: 10px; /* Add padding for scrollbar */
+}
+
+.loader {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4CAF50;
+}
+
+.notes-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background: #1976D2;
+}

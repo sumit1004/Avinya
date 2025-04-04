@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/memoryGame.css">
+    <link rel="stylesheet" href="css/sudokuGame.css">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            S</video>
+            
+            <div class="features-section">
+                <div class="game-container">
+                    <!-- Add game selector -->
+                    <div class="game-selector">
+                        <button class="game-tab active" data-game="memory">Memory Game</button>
+                        <button class="game-tab" data-game="sudoku">Sudoku</button>
+                    </div>
+                    
+                    <!-- Memory Game -->
+                    <div id="memoryGameSection" class="game-section">
+                        <div class="game-header">
+                            <div class="stats">
+                                <span>Time: <span id="timer">00:00</span></span>
+                                <span>Moves: <span id="moves">0</span></span>
+                                <span>Attempts Left: <span id="attempts">15</span></span>
+                            </div>
+                            <button id="restartGame">Restart Game</button>
+                        </div>
+                        <div id="memoryGame"></div>
+                    </div>
+
+                    <!-- Sudoku Game -->
+                    <div id="sudokuGameSection" class="game-section" style="display: none;">
+                        <div class="sudoku-container">
+                            <div class="controls">
+                                <select id="difficulty">
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
+                                </select>
+                                <button id="newGame">New Game</button>
+                                <button id="hint">Hint</button>
+                                <button id="checkSolution">Check Solution</button>
+                            </div>
+                            <div id="sudokuBoard"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                    <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                    <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                    <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                    <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                    <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                    <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                    <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                    <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                    <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                </ul>
+                <a href="#" class="logout-btn" id="logoutBtn">
+                    <img src="/assets/log-out.png" alt="">
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'login.html';
+            });
+        }
+    </script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add this before the closing body tag -->
+    <script src="js/chatbot.js"></script>
+    <script src="js/memoryGame.js"></script>
+    <script src="js/sudokuGame.js"></script>
+    <script>
+        // Game switching logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.game-tab');
+            const sections = document.querySelectorAll('.game-section');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    const targetGame = tab.dataset.game;
+                    document.getElementById(targetGame + 'GameSection').style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

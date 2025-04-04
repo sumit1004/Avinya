@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+            
+            <div class="contact-form-wrapper">
+                <div class="contact-form">
+                    <h1>Contact Us</h1>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="class" required>
+                            <label for="class">Class/Department</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="send-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                    <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                    <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                    <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                    <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                    <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                    <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                    <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                    <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                    <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                </ul>
+                <a href="#" class="logout-btn">
+                    <img src="/assets/log-out.png" alt="">
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            if (menuToggle && sidebar) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    sidebar.classList.toggle('active');
+                });
+            }
+
+            // Close sidebar when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                }
+            });
+
+            // Add logout functionality
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Clear any stored user data/session if needed
+                    window.location.href = 'login.html';
+                });
+            }
+        });
+    </script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add this before the closing body tag -->
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

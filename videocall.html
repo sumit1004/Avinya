@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinya - Make Timetable</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/take-quiz.css">
+    <link rel="stylesheet" href="css/videocall.css">
+</head><body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="video-container">
+                <div class="video-grid">
+                    <div class="video-box local-video">
+                        <video id="localVideo" autoplay muted playsinline></video>
+                        <span class="name-tag">You</span>
+                    </div>
+                    <div class="video-box remote-video">
+                        <video id="remoteVideo" autoplay playsinline></video>
+                        <span class="name-tag">Faculty</span>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <select id="facultyList" class="faculty-select">
+                        <option value="">Select Faculty</option>
+                        <option value="counselor">Student Counselor</option>
+                        <option value="math">Mathematics Faculty</option>
+                        <option value="physics">Physics Faculty</option>
+                        <option value="mentor">Career Mentor</option>
+                    </select>
+                    <div class="call-controls">
+                        <button id="startCall" class="send-btn">Start Call</button>
+                        <button id="endCall" class="send-btn">End Call</button>
+                        <button id="toggleMic" class="send-btn">Mute</button>
+                        <button id="toggleVideo" class="send-btn">Video Off</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+            </ul>
+            <a href="login.html" class="logout-btn">
+                <img src="/assets/login.png" alt="">
+                <span>Login</span>
+            </a>
+        </div>
+    </div>
+    <script src="js/take-quiz.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="js/videocall.js"></script>
+</body>
+</html>

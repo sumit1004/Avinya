@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coins - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/coins.css">
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="content-wrapper">
+                <div class="features-section">
+                    <div class="coin-container">
+                        <div class="coin-header">
+                            <button id="helpBtn" class="help-btn">❓ How it works</button>
+                            <h2>Your Coins: <span id="totalCoins">0</span> 🪙</h2>
+                        </div>
+                        
+                        <!-- Add help modal -->
+                        <div id="helpModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">×</span>
+                                <div class="help-content">
+                                    <h3>How to Earn & Use Coins</h3>
+                                    
+                                    <h4>🎮 Earning Coins</h4>
+                                    <ul>
+                                        <li>
+                                            <span>Complete Memory Game</span>
+                                            <strong>+50 coins</strong>
+                                        </li>
+                                        <li>
+                                            <span>Solve Sudoku Puzzle</span>
+                                            <strong>+100 coins</strong>
+                                        </li>
+                                        <li>
+                                            <span>Take Daily Quiz</span>
+                                            <strong>+75 coins</strong>
+                                        </li>
+                                    </ul>
+
+                                    <h4>💎 Using Your Coins</h4>
+                                    <ul>
+                                        <li>
+                                            <span>Premium Courses</span>
+                                            <strong>From 500 coins</strong>
+                                        </li>
+                                        <li>
+                                            <span>Study Materials</span>
+                                            <strong>From 200 coins</strong>
+                                        </li>
+                                        <li>
+                                            <span>Special Features</span>
+                                            <strong>Varies</strong>
+                                        </li>
+                                    </ul>
+
+                                    <p>🌟 Keep learning and playing to earn more coins! 🌟</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="coin-sections">
+                            <!-- Earnings Section -->
+                            <div class="earnings-section">
+                                <h3>Earn Coins</h3>
+                                <div class="task-list">
+                                    <div class="task">
+                                        <span>Complete Memory Game</span>
+                                        <span>+50 coins</span>
+                                    </div>
+                                    <div class="task">
+                                        <span>Complete Sudoku Puzzle</span>
+                                        <span>+100 coins</span>
+                                    </div>
+                                    <div class="task">
+                                        <span>Daily Quiz</span>
+                                        <span>+75 coins</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Shop Section -->
+                            <div class="shop-section">
+                                <h3>Redeem Coins</h3>
+                                <div class="search-bar">
+                                    <input type="text" id="courseSearch" placeholder="Search courses...">
+                                    <button id="searchBtn">🔍</button>
+                                </div>
+                                <div class="shop-items">
+                                    <div class="shop-item" data-name="basic electronics" data-cost="500">
+                                        <div class="course-icon">⚡</div>
+                                        <!-- <img src="/assets/course1.jpg" alt="Course"> -->
+                                        <h4>Basic Electronics</h4>
+                                        <p>500 coins</p>
+                                        <button class="redeem-btn">Redeem</button>
+                                    </div>
+                                    <div class="shop-item" data-name="advanced math" data-cost="750">
+                                        <div class="course-icon">📐</div>
+                                        <!-- <img src="/assets/course2.jpg" alt="Course"> -->
+                                        <h4>Advanced Math</h4>
+                                        <p>750 coins</p>
+                                        <button class="redeem-btn">Redeem</button>
+                                    </div>
+                                    <div class="shop-item" data-name="python programming" data-cost="600">
+                                        <div class="course-icon">🐍</div>
+                                        <!-- <img src="/assets/course3.jpg" alt="Course"> -->
+                                        <h4>Python Programming</h4>
+                                        <p>600 coins</p>
+                                        <button class="redeem-btn">Redeem</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <ul>
+                        <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                        <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                        <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                        <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                        <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                        <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                        <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                        <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                        <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                        <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                    </ul>
+                    <a href="#" class="logout-btn" id="logoutBtn">
+                        <img src="/assets/log-out.png" alt="">
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'login.html';
+            });
+        }
+    </script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add this before the closing body tag -->
+    <script src="js/chatbot.js"></script>
+    <script>
+        // Initialize modal functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('helpModal');
+            const helpBtn = document.getElementById('helpBtn');
+            const closeBtn = document.querySelector('.close');
+
+            helpBtn.onclick = () => {
+                modal.style.display = 'block';
+            };
+
+            closeBtn.onclick = () => {
+                modal.style.display = 'none';
+            };
+
+            window.onclick = (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
+
+        // ...existing menuToggle and logoutBtn code...
+    </script>
+</body>
+</html>

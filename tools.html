@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+            
+            <div class="features-section">
+                <div class="features-container">
+                    <h3>Quick Actions</h3>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <img src="/assets/videogen.gif" alt="Video Generator">
+                            <h3>Generate Video</h3>
+                            <p>Convert notes to video lectures</p>
+                            <a href="home.html">
+                                <button class="feature-btn">Create</button>
+                            </a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/note.png" alt="Notes">
+                            <h3>Smart Notes</h3>
+                            <p>Create AI-powered study notes</p>
+                            <a href="smart-notes.html">
+                                <button class="feature-btn">Write</button>
+                            </a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/summerize.png" alt="Summarize">
+                            <h3>Summarize</h3>
+                            <p>Get quick content summaries</p>
+                            <a href="summarizer.html">
+                                <button class="feature-btn">Start</button>
+                            </a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/doubt.png" alt="Doubt">
+                            <h3>Ask Doubt</h3>
+                            <p>Get instant answers</p>
+                            <a href="ask-doubt.html">
+                                <button class="feature-btn" onclick="openDoubtModal()">Ask</button>
+                            </a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/quiz.png" alt="Quiz">
+                            <h3>Take Quiz</h3>
+                            <p>Test your knowledge</p>
+                            <a href="take-quiz.html">
+                                <button class="feature-btn" onclick="openQuizModal()">Start</button>
+                            </a>
+                        </div>
+                        <div class="feature-card">
+                            <img src="/assets/timetable.png" alt="Timetable">
+                            <h3>Timetable</h3>
+                            <p>Create study schedule</p>
+                            <a href="timetable.html">
+                                <button class="feature-btn">Plan</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                    <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                    <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                    <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                    <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                    <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                    <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                    <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                    <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                    <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                </ul>
+                <a href="#" class="logout-btn" id="logoutBtn">
+                    <img src="/assets/log-out.png" alt="">
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'login.html';
+            });
+        }
+    </script>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add this before the closing body tag -->
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Add hover colors for each platform */
+        .social-links a.linkedin:hover {
+            background: #0077B5;
+        }
+
+        .social-links a.github:hover {
+            background: #181717;
+        }
+
+        .social-links a.gmail:hover {
+            background: #EA4335;
+        }
+
+        .social-links a:hover img {
+            filter: brightness(0) invert(1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="about-content-wrapper">
+                <div class="about-content">
+                    <h1>About Avinya</h1>
+                    <section class="website-info">
+                        <h2>Our Mission</h2>
+                        <p>Our AI-powered education platform transforms learning by converting text, notes, and lectures into engaging video lessons with AI avatars, animations, and voice narration. Students can access personalized study materials, generate AI-powered notes and summaries, and get instant doubt-solving through AI tutors. With interactive quizzes, gamification, and AI-generated study schedules, learning becomes more efficient and enjoyable. Additionally, students can connect with top educators through 1-on-1 video calls for expert guidance. Seamlessly integrated with YouTube, LMS platforms, and custom educational apps, our platform ensures a smarter, more accessible, and engaging learning experience for all.</p>
+                    </section>
+
+                    <section class="developer-info">
+                        <h2>Meet Our Team</h2>
+                        <div class="team-members">
+                            <div class="member">
+                                <img src="/assets/pritish.jpg" alt="Developer 1">
+                                <h3>Pritish Kumar</h3>
+                                <p>Lead Developer</p>
+                                <p>Skills: App developer</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/pritish-kumar-a19931327/" target="_blank" title="LinkedIn" class="linkedin"><img src="/assets/linkedin.png" alt="LinkedIn"></a>
+                                    <a href="https://github.com/Pritishcoder07" target="_blank" title="GitHub" class="github"><img src="/assets/github.png" alt="GitHub"></a>
+                                    <a href="mailto:pritishoffical1508@gmail.com" title="Email" class="gmail"><img src="/assets/gmail.png" alt="Email"></a>
+                                </div>
+                            </div>
+                            <div class="member">
+                                <img src="/assets/sumit.jpg" alt="Developer 2">
+                                <h3>Sumit Kumar</h3>
+                                <p>Full stack Developer</p>
+                                <p>Skills: React, Node.js, CSS Animation</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/sumit-kumar-685954329/" target="_blank" title="LinkedIn" class="linkedin"><img src="/assets/linkedin.png" alt="LinkedIn"></a>
+                                    <a href="https://github.com/sumit1004" target="_blank" title="GitHub" class="github"><img src="/assets/github.png" alt="GitHub"></a>
+                                    <a href="mailto:sumitkumar042006@gmail.com" title="Email" class="gmail"><img src="/assets/gmail.png" alt="Email"></a>
+                                </div>
+                            </div>
+                            <div class="member">
+                                <img src="/assets/roshan.jpg" alt="Developer 3">
+                                <h3>Roshan Chandrakar</h3>
+                                <p>Backend Developer</p>
+                                <p>Skills: Node.js, Python, Database Design</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/roshan-chandraker-187a06327/" target="_blank" title="LinkedIn" class="linkedin"><img src="/assets/linkedin.png" alt="LinkedIn"></a>
+                                    <a href="https://github.com/Roshan-x-arc" target="_blank" title="GitHub" class="github"><img src="/assets/github.png" alt="GitHub"></a>
+                                    <a href="mailto:roshanchandraker286@gmail.com" title="Email" class="gmail"><img src="/assets/gmail.png" alt="Email"></a>
+                                </div>
+                            </div>
+                            <div class="member">
+                                <img src="/assets/dev4.png" alt="Developer 4">
+                                <h3>Om Pandey</h3>
+                                <p>UI/UX Designer</p>
+                                <p>Skills: Figma, Adobe XD, User Research</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/om-pandey-6b2b03328/" target="_blank" title="LinkedIn" class="linkedin"><img src="/assets/linkedin.png" alt="LinkedIn"></a>
+                                    <a href="https://github.com/om-pandey" target="_blank" title="GitHub" class="github"><img src="/assets/github.png" alt="GitHub"></a>
+                                    <a href="mailto:om7001163@gmail.com" title="Email" class="gmail"><img src="/assets/gmail.png" alt="Email"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>Email: contact@avinya.com</p>
+                        <p>Location: Chhattishgarh</p>
+                    </section>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                    <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                    <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                    <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                    <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                    <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                    <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                    <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                    <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                    <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                </ul>
+                <a href="#" class="logout-btn" id="logoutBtn">
+                    <img src="/assets/log-out.png" alt="">
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+
+        // Add logout functionality
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Clear any stored user data/session if needed
+                window.location.href = 'login.html';
+            });
+        }
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>

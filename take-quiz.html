@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinya - Take Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/take-quiz.css">
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+   
+            <!-- Main Content -->
+            <div class="features-section">
+                <div class="quiz-container" id="quiz">
+                    <div class="quiz-header">
+                        <h1>Take a Quiz</h1>
+                        <p>Test your knowledge and improve your understanding</p>
+                    </div>
+                    
+                    <!-- Add search box below the header -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" id="quizSearch" placeholder="Search for quizzes by topic...">
+                            <button id="searchButton">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="search-filters">
+                            <select id="difficultyFilter">
+                                <option value="">All Difficulties</option>
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                            <select id="timeFilter">
+                                <option value="">Any Duration</option>
+                                <option value="short">Short (< 10 min)</option>
+                                <option value="medium">Medium (10-20 min)</option>
+                                <option value="long">Long (> 20 min)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-content">
+                        <!-- Subject Selection View -->
+                        <div id="subjectSelectionView" class="active-view">
+                            <h2>Select a Subject</h2>
+                            <div class="subjects-grid">
+                                <div class="subject-card" data-subject="mathematics">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/3655/3655586.png" alt="Mathematics">
+                                    </div>
+                                    <h3>Mathematics</h3>
+                                    <p>Algebra, Calculus, Geometry, Trigonometry</p>
+                                    <div class="quiz-count">12 quizzes</div>
+                                </div>
+                                
+                                <div class="subject-card" data-subject="physics">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2497/2497631.png" alt="Physics">
+                                    </div>
+                                    <h3>Physics</h3>
+                                    <p>Mechanics, Thermodynamics, Electromagnetism</p>
+                                    <div class="quiz-count">8 quizzes</div>
+                                </div>
+                                
+                                <div class="subject-card" data-subject="chemistry">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/1048/1048195.png" alt="Chemistry">
+                                    </div>
+                                    <h3>Chemistry</h3>
+                                    <p>Organic, Inorganic, Physical Chemistry</p>
+                                    <div class="quiz-count">10 quizzes</div>
+                                </div>
+                                
+                                <div class="subject-card" data-subject="biology">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2941/2941552.png" alt="Biology">
+                                    </div>
+                                    <h3>Biology</h3>
+                                    <p>Botany, Zoology, Human Physiology</p>
+                                    <div class="quiz-count">9 quizzes</div>
+                                </div>
+                                
+                                <div class="subject-card" data-subject="computer-science">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Computer Science">
+                                    </div>
+                                    <h3>Computer Science</h3>
+                                    <p>Programming, Data Structures, Algorithms</p>
+                                    <div class="quiz-count">15 quizzes</div>
+                                </div>
+                                
+                                <div class="subject-card" data-subject="english">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/3898/3898082.png" alt="English">
+                                    </div>
+                                    <h3>English</h3>
+                                    <p>Grammar, Literature, Comprehension</p>
+                                    <div class="quiz-count">7 quizzes</div>
+                                </div>
+                                
+                                <div class="subject-card" data-subject="history">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2784/2784403.png" alt="History">
+                                    </div>
+                                    <h3>History</h3>
+                                    <p>Ancient, Medieval, Modern History</p>
+                                    <div class="quiz-count">6 quizzes</div>
+                                </div>
+                                
+                                <div class="subject-card" data-subject="geography">
+                                    <div class="subject-icon">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/2784/2784487.png" alt="Geography">
+                                    </div>
+                                    <h3>Geography</h3>
+                                    <p>Physical, Human, Environmental Geography</p>
+                                    <div class="quiz-count">5 quizzes</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add Search Results View -->
+                        <div id="searchResultsView" class="hidden-view">
+                            <div class="view-header">
+                                <button id="backFromSearch" class="back-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Back
+                                </button>
+                                <h2>Search Results</h2>
+                            </div>
+                            
+                            <div id="searchResultsCount" class="results-count">0 quizzes found</div>
+                            
+                            <div class="quiz-list" id="searchResultsList">
+                                <!-- Search results will be populated dynamically -->
+                            </div>
+                        </div>
+                        
+                        <!-- Quiz Selection View -->
+                        <div id="quizSelectionView" class="hidden-view">
+                            <div class="view-header">
+                                <button id="backToSubjects" class="back-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Back to Subjects
+                                </button>
+                                <h2 id="selectedSubjectTitle">Subject Quizzes</h2>
+                            </div>
+                            
+                            <div class="quiz-list" id="quizList">
+                                <!-- Quiz items will be populated dynamically -->
+                            </div>
+                        </div>
+                        
+                        <!-- Quiz Taking View -->
+                        <div id="quizTakingView" class="hidden-view">
+                            <div class="view-header">
+                                <button id="backToQuizzes" class="back-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Back to Quizzes
+                                </button>
+                                <h2 id="currentQuizTitle">Quiz Title</h2>
+                            </div>
+                            
+                            <div class="quiz-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                <div class="progress-text">
+                                    Question <span id="currentQuestionNum">1</span> of <span id="totalQuestions">10</span>
+                                </div>
+                            </div>
+                            
+                            <div class="question-container" id="questionContainer">
+                                <!-- Question will be populated dynamically -->
+                            </div>
+                            
+                            <div class="quiz-navigation">
+                                <button id="prevQuestion" class="nav-button" disabled>Previous</button>
+                                <button id="nextQuestion" class="nav-button">Next</button>
+                                <button id="submitQuiz" class="submit-button hidden">Submit Quiz</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Quiz Results View -->
+                        <div id="quizResultsView" class="hidden-view">
+                            <div class="view-header">
+                                <button id="backToSubjectsFromResults" class="back-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Back to Subjects
+                                </button>
+                                <h2>Quiz Results</h2>
+                            </div>
+                            
+                            <div class="results-container">
+                                <div class="results-header">
+                                    <h3 id="resultQuizTitle">Quiz Title</h3>
+                                    <div class="score-container">
+                                        <div class="score-circle">
+                                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                                <path class="circle-bg" d="M18 2.0845
+                                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                                    a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                                <path id="scoreCircle" class="circle" stroke-dasharray="0, 100" d="M18 2.0845
+                                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                                    a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                            </svg>
+                                            <div class="score-text">
+                                                <span id="scorePercentage">0%</span>
+                                            </div>
+                                        </div>
+                                        <div class="score-details">
+                                            <div class="score-item">
+                                                <span class="score-label">Correct:</span>
+                                                <span id="correctAnswers" class="score-value">0</span>
+                                            </div>
+                                            <div class="score-item">
+                                                <span class="score-label">Incorrect:</span>
+                                                <span id="incorrectAnswers" class="score-value">0</span>
+                                            </div>
+                                            <div class="score-item">
+                                                <span class="score-label">Total:</span>
+                                                <span id="totalQuestionCount" class="score-value">0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="results-feedback" id="resultsFeedback">
+                                    <!-- Feedback will be populated dynamically -->
+                                </div>
+                                
+                                <div class="results-actions">
+                                    <button id="reviewQuiz" class="action-button">Review Answers</button>
+                                    <button id="retakeQuiz" class="action-button">Retake Quiz</button>
+                                    <button id="shareResults" class="action-button">Share Results</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chatbot Container -->
+            <div class="chatbot-container">
+                <div class="chat-icon" id="chatIcon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+                </div>
+                <div class="chat-window" id="chatWindow">
+                    <div class="chat-header">
+                        <span>Avinya Assistant</span>
+                        <span class="close-chat" id="closeChat">×</span>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            Hi there! I'm Avinya's AI assistant. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="userInput" placeholder="Type your message...">
+                        <button id="sendMessage">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+                        <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                    <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                    <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                    <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                    <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                    <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                    <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                    <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                    <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                    <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                </ul>
+        <a href="login.html" class="logout-btn">
+            <img src="/assets/login.png" alt="">
+            <span>Login</span>
+        </a>
+    </div>
+    
+    <script src="js/take-quiz.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html> 

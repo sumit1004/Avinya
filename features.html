@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+
+
+
+            <div class="sidebar">
+                <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                </ul>
+                <a href="index.html" class="logout-btn">
+                    <img src="/assets/Home.svg" alt="">
+                    <span>Home</span>
+                </a>
+            </div>
+
+            <div class="features-container">
+                <h1>Features</h1>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <img src="/assets/videogen.gif" alt="Video Generator">
+                        <h3>Lecture Video Generator</h3>
+                        <p>Transform your text notes into engaging video lectures with AI-powered animation and voiceovers</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="/assets/note.png" alt="Notes Maker">
+                        <h3>Smart Notes Maker</h3>
+                        <p>Convert lengthy lectures into concise, well-structured study notes automatically</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="/assets/summerize.png" alt="Content Summarizer">
+                        <h3>Content Summarizing</h3>
+                        <p>Get quick, accurate summaries of lengthy study materials and research papers</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="/assets/doubt.png" alt="Doubt Solving">
+                        <h3>Realtime Doubt Solving</h3>
+                        <p>Get instant answers to your academic questions with our AI-powered assistance</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="/assets/quiz.png" alt="Quiz">
+                        <h3>Practice Quiz Generator</h3>
+                        <p>Create customized quizzes from your study material for better revision</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="/assets/timetable.png" alt="Timetable">
+                        <h3>AI Timetable Maker</h3>
+                        <p>Create personalized study schedules using AI to optimize your learning efficiency</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+    </script>
+    
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add this before the closing body tag -->
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

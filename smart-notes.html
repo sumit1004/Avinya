@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Notes - Avinya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="smart-notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+
+            <div class="sidebar">
+                <!-- Same sidebar as dashboard -->
+                <ul>
+                    <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+                    <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+                    <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+                    <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+                    <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+                    <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+                    <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+                    <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+                    <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+                    <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+                </ul>
+                <a href="#" class="logout-btn" id="logoutBtn">
+                    <img src="/assets/log-out.png" alt="">
+                    <span>Logout</span>
+                </a>
+            </div>
+    
+            <div class="notes-container">
+                <h1>Smart Notes Generator</h1>
+                <div class="notes-input-section">
+                    <div class="input-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Enter subject name">
+                    </div>
+                    <div class="input-group">
+                        <label for="topic">Topic</label>
+                        <input type="text" id="topic" placeholder="Enter topic name">
+                    </div>
+                    <div class="input-group">
+                        <label for="complexity">Complexity Level</label>
+                        <select id="complexity">
+                            <option value="basic">Basic</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="noteType">Note Type</label>
+                        <select id="noteType">
+                            <option value="detailed">Detailed Notes</option>
+                            <option value="summary">Summary</option>
+                            <option value="bullets">Bullet Points</option>
+                        </select>
+                    </div>
+                    <button id="generateBtn" class="send-btn">Generate Notes</button>
+                </div>
+                <div class="notes-output-section">
+                    <div class="loader" style="display: none;">Generating...</div>
+                    <div id="notesOutput" class="notes-content"></div>
+                    <div class="notes-actions" style="display: none;">
+                        <button id="copyBtn" class="action-btn">Copy</button>
+                        <button id="downloadBtn" class="action-btn">Download</button>
+                        <button id="saveBtn" class="action-btn">Save to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+       
+        </div>
+    </div>
+    <div class="chatbot-container">
+        <div class="chat-icon" id="chatIcon">
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Avinya Assistant</span>
+                <span class="close-chat" id="closeChat">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Avinya's AI assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/smart-notes.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

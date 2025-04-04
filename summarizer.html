@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinya - Content Summarizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="css/summarizer.css">
+    <!-- Add PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';</script>
+</head>
+<body>
+    <div class="background">
+        <div class="bg">
+            <video autoplay muted loop id="bgVideo">
+                <source src="/assets/bgvideo.mp4" type="video/mp4">
+            </video>
+   
+            <!-- Main Content -->
+             <div class="features-section">
+
+            <div class="summarizer-container " id="summarizer">
+                <div class="summarizer-header">
+                    <h1>Content Summarizer</h1>
+                    <p>Upload a document or paste your text to get an AI-powered summary</p>
+                </div>
+                
+                <div class="input-methods">
+                    <div class="input-method">
+                        <h2>Upload a Document</h2>
+                        <div class="file-upload-area" id="dropArea">
+                            <p>Drag & drop your file here or</p>
+                            <input type="file" id="fileInput" accept=".txt,.pdf,.doc,.docx">
+                            <button class="file-upload-btn" id="browseBtn">Browse Files</button>
+                            <div class="file-info" id="fileInfo">
+                                <span>Selected: <span class="file-name" id="fileName"></span></span>
+                                <span class="remove-file" id="removeFile">Remove</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-method">
+                        <h2>Paste Your Text</h2>
+                        <div class="text-input-area">
+                            <textarea id="textInput" placeholder="Paste or type your content here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="summarize-btn" id="summarizeBtn">Summarize Content</button>
+                
+                <div class="loading" id="loadingIndicator">
+                    <div class="loading-spinner"></div>
+                    <p>Generating summary...</p>
+                </div>
+                
+                <div class="summary-result" id="summaryResult">
+                    <h2>Summary</h2>
+                    <div class="summary-content" id="summaryContent">
+                        <!-- Summary will be displayed here -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+            <!-- Chatbot Container -->
+            <div class="chatbot-container">
+                <div class="chat-icon" id="chatIcon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chat">
+                </div>
+                <div class="chat-window" id="chatWindow">
+                    <div class="chat-header">
+                        <span>Avinya Assistant</span>
+                        <span class="close-chat" id="closeChat">×</span>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            Hi there! I'm Avinya's AI assistant. How can I help you today?
+                        </div>
+                    </div>
+                    <div class="typing-indicator" id="typingIndicator">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <div class="chat-input">
+                        <input type="text" id="userInput" placeholder="Type your message...">
+                        <button id="sendMessage">Send</button>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" id="menuToggle"><img src="/assets/menu.svg" alt=""><span>Menu</span></a></li>
+            <li><a href="home.html"><img src="/assets/Home.svg" alt=""><span>Home</span></a></li>
+            <li><a href="dashboard.html" class="active"><img src="/assets/dashboard.svg" alt=""><span>Dashboard</span></a></li>
+            <li><a href="material.html"><img src="/assets/material.svg" alt=""><span>Features</span></a></li>
+            <li><a href="videocall.html"><img src="/assets/videocall.png" alt=""><span>Call experts</span></a></li>
+            <li><a href="coin.html"><img src="/assets/coins.png" alt=""><span>Coin earned</span></a></li>
+            <li><a href="game.html"><img src="/assets/game.png" alt=""><span>Games</span></a></li>
+            <li><a href="tools.html"><img src="/assets/Tool.svg" alt=""><span>Other tool</span></a></li>
+            <li><a href="contact.html"><img src="/assets/contact.svg" alt=""><span>Contact us</span></a></li>
+            <li><a href="about.html"><img src="/assets/about.svg" alt=""><span>About us</span></a></li>
+        </ul>
+        <a href="login.html" class="logout-btn">
+            <img src="/assets/login.png" alt="">
+            <span>Login</span>
+        </a>
+    </div>
+    
+    <script>
+        // Gemini API configuration
+        const GEMINI_API_KEY = 'AIzaSyDrnWM6Pd_JHcr6nWpLtf1qF86q_ydTPWw'; // Replace with your actual API key
+        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
+        async function summarizeWithGemini(text) {
+            try {
+                const response = await fetch(`${API_URL}?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `Please provide a concise summary of the following text: ${text}`
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                console.error('Error:', error);
+                throw new Error('Failed to generate summary');
+            }
+        }
+
+        // Add PDF handling function
+        async function extractTextFromPDF(file) {
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                let fullText = '';
+                
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    const pageText = textContent.items.map(item => item.str).join(' ');
+                    fullText += pageText + ' ';
+                }
+                
+                return fullText.trim();
+            } catch (error) {
+                throw new Error('Error reading PDF file: ' + error.message);
+            }
+        }
+
+        // Menu toggle functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle('active');
+        });
+        
+        // File upload functionality
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const removeFile = document.getElementById('removeFile');
+        const textInput = document.getElementById('textInput');
+        const summarizeBtn = document.getElementById('summarizeBtn');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const summaryResult = document.getElementById('summaryResult');
+        const summaryContent = document.getElementById('summaryContent');
+        
+        // Open file dialog when browse button is clicked
+        browseBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        // Handle file selection
+        fileInput.addEventListener('change', (e) => {
+            if (fileInput.files.length > 0) {
+                displayFileInfo(fileInput.files[0]);
+            }
+        });
+        
+        // Handle drag and drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            dropArea.classList.add('highlight');
+        }
+        
+        function unhighlight() {
+            dropArea.classList.remove('highlight');
+        }
+        
+        dropArea.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            if (files.length > 0) {
+                fileInput.files = files;
+                displayFileInfo(files[0]);
+            }
+        }
+        
+        function displayFileInfo(file) {
+            fileName.textContent = file.name;
+            fileInfo.style.display = 'block';
+        }
+        
+        // Remove selected file
+        removeFile.addEventListener('click', () => {
+            fileInput.value = '';
+            fileInfo.style.display = 'none';
+        });
+        
+        // Handle summarize button click
+        summarizeBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            const text = textInput.value.trim();
+            
+            if (!file && !text) {
+                alert('Please upload a file or enter text to summarize');
+                return;
+            }
+            
+            loadingIndicator.style.display = 'block';
+            
+            try {
+                let contentToSummarize = text;
+                
+                if (file) {
+                    if (file.type === 'text/plain') {
+                        contentToSummarize = await file.text();
+                    } else if (file.type === 'application/pdf') {
+                        contentToSummarize = await extractTextFromPDF(file);
+                    } else {
+                        throw new Error('Only text and PDF files are supported at the moment');
+                    }
+                }
+
+                const summary = await summarizeWithGemini(contentToSummarize);
+                
+                loadingIndicator.style.display = 'none';
+                summaryResult.style.display = 'block';
+                summaryContent.innerHTML = `<p>${summary}</p>`;
+                summaryResult.scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                loadingIndicator.style.display = 'none';
+                alert(error.message);
+            }
+        });
+    </script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>
